@@ -1,0 +1,455 @@
+{
+  "classes" : {
+    "kicks" : {
+      "type" : "minim",
+      "props" : [ "data" ],
+      "patcher" : "acc.kicks",
+      "inlet_cnt" : 1,
+      "inlet_ids" : [ "acc" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 1,
+      "outlet_ids" : [ "kicks" ],
+      "outlet_def" : 0
+    }
+    ,
+    "wavelets" : {
+      "type" : "minim",
+      "props" : [ "data" ],
+      "patcher" : "acc.wavelets",
+      "inlet_cnt" : 1,
+      "inlet_ids" : [ "acc" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 3,
+      "outlet_ids" : [ "energy", "slowenergy", "wavelets" ],
+      "outlet_def" : 0
+    }
+    ,
+    "adaptation" : {
+      "type" : "minim",
+      "props" : [ "data" ],
+      "patcher" : "adaptation",
+      "inlet_cnt" : 1,
+      "inlet_ids" : [ "data" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 2,
+      "outlet_ids" : [ "data", "adaptation" ],
+      "outlet_def" : 0
+    }
+    ,
+    "adsr" : {
+      "type" : "minim",
+      "props" : [ "data" ],
+      "patcher" : "adsr",
+      "inlet_cnt" : 5,
+      "inlet_ids" : [ "gate", "attack", "decay", "sustain", "release" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 1,
+      "outlet_ids" : [ "data" ],
+      "outlet_def" : 0
+    }
+    ,
+    "autoscale" : {
+      "type" : "minim",
+      "props" : [ "data" ],
+      "patcher" : "autoscale",
+      "inlet_cnt" : 2,
+      "inlet_ids" : [ "data", "freeze" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 1,
+      "outlet_ids" : [ "data" ],
+      "outlet_def" : 0
+    }
+    ,
+    "bpf" : {
+      "type" : "minim",
+      "props" : [ "data" ],
+      "patcher" : "bpf",
+      "inlet_cnt" : 2,
+      "inlet_ids" : [ "trigger", "duration" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 1,
+      "outlet_ids" : [ "data" ],
+      "outlet_def" : 0
+    }
+    ,
+    "force" : {
+      "type" : "minim",
+      "props" : [ "data" ],
+      "patcher" : "emg.force",
+      "inlet_cnt" : 1,
+      "inlet_ids" : [ "emg" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 1,
+      "outlet_ids" : [ "force" ],
+      "outlet_def" : 0
+    }
+    ,
+    "reduce" : {
+      "type" : "minim",
+      "props" : [ "data" ],
+      "patcher" : "emg.force.reduce",
+      "inlet_cnt" : 1,
+      "inlet_ids" : [ "emg" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 1,
+      "outlet_ids" : [ "force" ],
+      "outlet_def" : 0
+    }
+    ,
+    "looper" : {
+      "type" : "minim",
+      "props" : [ "data" ],
+      "patcher" : "looper",
+      "inlet_cnt" : 1,
+      "inlet_ids" : [ "data" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 1,
+      "outlet_ids" : [ "data" ],
+      "outlet_def" : 0
+    }
+
+    ,
+    "mapper" : {
+      "type" : "minim",
+      "props" : [ "data" ],
+      "patcher" : "mapper",
+      "inlet_cnt" : 1,
+      "inlet_ids" : [ "data" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 2,
+      "outlet_ids" : [ "data", "model" ],
+      "outlet_def" : 0
+    }
+    ,
+    "schmitt" : {
+      "type" : "minim",
+      "props" : [ "data" ],
+      "patcher" : "schmitt.trigger",
+      "inlet_cnt" : 1,
+      "inlet_ids" : [ "data" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 1,
+      "outlet_ids" : [ "data" ],
+      "outlet_def" : 0
+    }
+    ,
+    "streamview" : {
+      "type" : "minim",
+      "props" : [ "data" ],
+      "patcher" : "streamview",
+      "inlet_cnt" : 1,
+      "inlet_ids" : [ "data" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 1,
+      "outlet_ids" : [ "data" ],
+      "outlet_def" : 0
+    }
+    ,
+    "myo" : {
+      "type" : "minim",
+      "props" : [ "devices" ],
+      "patcher" : "myo",
+      "inlet_cnt" : 1,
+      "inlet_ids" : [ "active" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 4,
+      "outlet_ids" : [ "acc", "gyro", "quat", "emg" ],
+      "outlet_def" : 0
+    }
+    ,
+    "conv" : {
+      "type" : "minim",
+      "props" : [ "fx", "audio_in", "audio_out", "mono" ],
+      "patcher" : "fx.conv~",
+      "inlet_cnt" : 1,
+      "inlet_ids" : [ "audio" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 1,
+      "outlet_ids" : [ "audio" ],
+      "outlet_def" : 0
+    }
+    ,
+    "denoiser" : {
+      "type" : "minim",
+      "props" : [ "fx", "audio_in", "audio_out", "mono" ],
+      "patcher" : "fx.denoiser~",
+      "inlet_cnt" : 1,
+      "inlet_ids" : [ "audio" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 2,
+      "outlet_ids" : [ "audio", "model" ],
+      "outlet_def" : 0
+    }
+    ,
+    "resonators" : {
+      "type" : "minim",
+      "props" : [ "fx", "audio_in", "audio_out", "mono" ],
+      "patcher" : "fx.resonators~",
+      "inlet_cnt" : 5,
+      "inlet_ids" : [ "audio", "levels", "decay", "detune", "inharm" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 2,
+      "outlet_ids" : [ "audio", "model" ],
+      "outlet_def" : 0
+    }
+    ,
+    "reverb" : {
+      "type" : "minim",
+      "props" : [ "fx", "audio_in", "audio_out", "mono" ],
+      "patcher" : "fx.reverb~",
+      "inlet_cnt" : 1,
+      "inlet_ids" : [ "audio" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 2,
+      "outlet_ids" : [ "audio", "model" ],
+      "outlet_def" : 0
+    }
+    ,
+    "gmmlive" : {
+      "type" : "minim",
+      "props" : [ "ml" ],
+      "patcher" : "gmm.live",
+      "inlet_cnt" : 2,
+      "inlet_ids" : [ "data", "record" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 3,
+      "outlet_ids" : [ "prob", "logprob", "beta" ],
+      "outlet_def" : 0
+    }
+    ,
+    "gmmmarkers" : {
+      "type" : "minim",
+      "props" : [ "ml" ],
+      "patcher" : "gmm.markers",
+      "inlet_cnt" : 3,
+      "inlet_ids" : [ "data", "markers", "record" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 3,
+      "outlet_ids" : [ "prob", "logprob", "beta" ],
+      "outlet_def" : 0
+    }
+    ,
+    "gmrgestures" : {
+      "type" : "minim",
+      "props" : [ "ml" ],
+      "patcher" : "gmr.gestures",
+      "inlet_cnt" : 3,
+      "inlet_ids" : [ "data", "output", "record" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 3,
+      "outlet_ids" : [ "prob", "logprob", "output" ],
+      "outlet_def" : 0
+    }
+    ,
+    "gmrposes" : {
+      "type" : "minim",
+      "props" : [ "ml" ],
+      "patcher" : "gmr.poses",
+      "inlet_cnt" : 3,
+      "inlet_ids" : [ "data", "output", "record" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 3,
+      "outlet_ids" : [ "prob", "logprob", "output" ],
+      "outlet_def" : 0
+    }
+    ,
+    "hhmmlive" : {
+      "type" : "minim",
+      "props" : [ "ml" ],
+      "patcher" : "hhmm.live",
+      "inlet_cnt" : 2,
+      "inlet_ids" : [ "data", "record" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 4,
+      "outlet_ids" : [ "prob", "logprob", "progress", "alpha" ],
+      "outlet_def" : 0
+    }
+    ,
+    "hhmmmarkers" : {
+      "type" : "minim",
+      "props" : [ "ml" ],
+      "patcher" : "hhmm.markers",
+      "inlet_cnt" : 3,
+      "inlet_ids" : [ "data", "markers", "record" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 4,
+      "outlet_ids" : [ "prob", "logprob", "progress", "alpha" ],
+      "outlet_def" : 0
+    }
+    ,
+    "xmmgestures" : {
+      "type" : "minim",
+      "props" : [ "ml" ],
+      "patcher" : "xmm.gestures",
+      "inlet_cnt" : 3,
+      "inlet_ids" : [ "data", "output", "record" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 3,
+      "outlet_ids" : [ "prob", "logprob", "output" ],
+      "outlet_def" : 0
+    }
+    ,
+    "xmmmarkers" : {
+      "type" : "minim",
+      "props" : [ "ml" ],
+      "patcher" : "xmm.markers",
+      "inlet_cnt" : 4,
+      "inlet_ids" : [ "data", "output", "markers", "record" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 3,
+      "outlet_ids" : [ "prob", "logprob", "output" ],
+      "outlet_def" : 0
+    }
+    ,
+    "concat1" : {
+      "type" : "minim",
+      "props" : [ "synth", "audio_out", "mono" ],
+      "patcher" : "concat1~",
+      "inlet_cnt" : 5,
+      "inlet_ids" : [ "loudness", "resamp", "resampvar", "duration", "period" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 1,
+      "outlet_ids" : [ "audio" ],
+      "outlet_def" : 0
+    }
+    ,
+    "concat2" : {
+      "type" : "minim",
+      "props" : [ "synth", "audio_out", "stereo" ],
+      "patcher" : "concat2~",
+      "inlet_cnt" : 1,
+      "inlet_ids" : [ "xy" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 2,
+      "outlet_ids" : [ "audio0", "audio1" ],
+      "outlet_def" : 0
+    }
+    ,
+    "fm" : {
+      "type" : "minim",
+      "props" : [ "synth", "audio_out", "mono" ],
+      "patcher" : "fm~",
+      "inlet_cnt" : 3,
+      "inlet_ids" : [ "carrier", "modulator", "depth" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 1,
+      "outlet_ids" : [ "audio" ],
+      "outlet_def" : 0
+    }
+    ,
+    "granular1" : {
+      "type" : "minim",
+      "props" : [ "synth", "audio_out", "mono" ],
+      "patcher" : "granular1~",
+      "inlet_cnt" : 2,
+      "inlet_ids" : [ "position", "level" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 1,
+      "outlet_ids" : [ "audio" ],
+      "outlet_def" : 0
+    }
+    ,
+    "granular2" : {
+      "type" : "minim",
+      "props" : [ "synth", "audio_out", "mono" ],
+      "patcher" : "granular2~",
+      "inlet_cnt" : 1,
+      "inlet_ids" : [ "mfcc" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 1,
+      "outlet_ids" : [ "audio" ],
+      "outlet_def" : 0
+    }
+    ,
+    "reconcat" : {
+      "type" : "minim",
+      "props" : [ "synth", "audio_out", "mono" ],
+      "patcher" : "reconcat~",
+      "inlet_cnt" : 6,
+      "inlet_ids" : [ "loudness", "resamp", "resampvar", "duration", "period", "audio" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 1,
+      "outlet_ids" : [ "audio" ],
+      "outlet_def" : 0
+    }
+    ,
+    "sampler" : {
+      "type" : "minim",
+      "props" : [ "synth", "audio_out", "stereo" ],
+      "patcher" : "sampler~",
+      "inlet_cnt" : 1,
+      "inlet_ids" : [ "trigger" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 1,
+      "outlet_ids" : [ "audio0", "audio1" ],
+      "outlet_def" : 0
+    }
+    ,
+    "output" : {
+      "type" : "jamoma",
+      "props" : [ "audio_in", "stereo" ],
+      "patcher" : "output~",
+      "inlet_cnt" : 2,
+      "inlet_ids" : [ "audio0", "audio1" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 1,
+      "outlet_ids" : [ "description" ],
+      "outlet_def" : 0
+    }
+    ,
+    "maxobj" : {
+      "type" : "maxobj",
+      "maxargs": "unknown",
+      "inlet_cnt" : "unknown",
+      "inlet_ids" : [ "in0" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : "unknown",
+      "outlet_ids" : [ "out0" ],
+      "outlet_def" : 0
+    }
+    ,
+    "scale" : {
+      "type" : "internal",
+      "maxargs": 5,
+      "inlet_cnt" : 6,
+      "inlet_ids" : [ "data", "inmin", "inmax", "outmin", "outmax", "exp" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 1,
+      "outlet_ids" : [ "data" ],
+      "outlet_def" : 0
+    }
+    ,
+    "atodb" : {
+      "type" : "internal",
+      "maxargs": 0,
+      "inlet_cnt" : 1,
+      "inlet_ids" : [ "data" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 1,
+      "outlet_ids" : [ "data" ],
+      "outlet_def" : 0
+    }
+    ,
+    "dbtoa" : {
+      "type" : "internal",
+      "maxargs": 0,
+      "inlet_cnt" : 1,
+      "inlet_ids" : [ "data" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : 1,
+      "outlet_ids" : [ "data" ],
+      "outlet_def" : 0
+    }
+    ,
+    "unpack" : {
+      "type" : "internal",
+      "maxargs": "unknown",
+      "inlet_cnt" : 1,
+      "inlet_ids" : [ "data" ],
+      "inlet_def" : 0,
+      "outlet_cnt" : "unknown",
+      "outlet_ids" : [ "out0" ],
+      "outlet_def" : 0
+    }
+  }
+}

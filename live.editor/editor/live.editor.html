@@ -1,0 +1,149 @@
+<!doctype html>
+
+<html>
+<head>
+
+<title>Max scripting</title>
+<meta charset='utf-8'/>
+
+<link rel='stylesheet' href='../lib/codemirror/doc/docs.css'>
+<link rel='stylesheet' href='../lib/codemirror/lib/codemirror.css'>
+<link rel='stylesheet' href='../lib/codemirror/theme/cobalt.css'>
+
+<script src='../lib/codemirror/lib/codemirror.js'></script>
+<script src='../lib/codemirror/addon/edit/closebrackets.js'></script>
+<script src='../lib/codemirror/addon/selection/active-line.js'></script>
+<script src='../lib/codemirror/addon/display/panel.js'></script>
+<script src="../lib/codemirror/addon/mode/simple.js"></script>
+
+<script src='./util.js'></script>
+<script src='./communication.js'></script>
+<script src='./textareas.js'></script>
+<script src='./graph.js'></script>
+<script src='./parser.js'></script>
+
+<!-- ================ STYLES ================ -->
+
+<style>
+
+* {
+  border: none;
+  margin: 0em;
+  padding: 0em;
+}
+
+body {
+  width: calc(100% - 1em);
+  height: calc(100% - 1.5em);
+  margin: 1em 0em 0em 1em;
+}
+
+table {
+  width: calc(100%);
+  height: calc(100%);
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+td {
+  padding: 0em 1em 0.6em 0em;
+}
+
+.codemirror {
+  width: 100%;
+  height: 100%;
+  font-size: 1em;
+  display: inline-block;
+}
+
+#editor {
+
+}
+
+#output {
+
+}
+
+#objects {
+
+}
+
+.breakpoints { width: .8em; }
+.breakpoint { color: #f00; }
+.CodeMirror { border: 1px solid #aaa; }
+
+.panel {
+  background: #f7f7f7;
+  padding: 3px 7px;
+  font-size: 1em;
+  font-weight: bold;
+  border: solid #aaa;
+  border-width: 1px 1px 0px 1px;
+  cursor: default;
+}
+
+.clear_button {
+  float: right;
+  cursor: pointer;
+}
+
+.err-highlight { background-color: #fe5; }
+
+.cm-websocket { color: #0000ff; }
+.cm-send      { color: #008000; }
+.cm-error     { color: #f00000; }
+.cm-warning   { color: #ff8c00; }
+.cm-class     { color: #008000; }
+
+.cm-command   { color: #000000; }
+.cm-object    { color: #0000CD; }
+.cm-args      { color: #C71585; }
+.cm-messages  { color: #ff8c00; }
+.cm-inlet     { color: #fFA500; }
+.cm-outlet    { color: #FF4500; }
+
+</style>
+</head>
+
+<!-- ================ HTML ================ -->
+
+<body>
+  <table id='table'>
+    <tr style="height:75%">
+      <td style="width:100%;" colspan="2">
+        <div id='editor' class='codemirror'></div>
+      </td>
+    </tr>
+    <tr style="height:25%">
+      <td style="width:50%;">
+        <div id='output' class='codemirror'></div>
+      </td>
+      <td style="width:50%;">
+        <div id='info' class='codemirror'></div>
+      </td>
+    </tr>
+  </table>
+</body>
+
+<!-- ================ JAVASCRIPT ================ -->
+
+<script>
+const do_debug = true
+function debug (msg) { if (do_debug) console.log(msg) }
+
+const output = new TextAreaScroll('#output', 'Output', 'output')
+const info = new TextArea('#info', 'Info', 'info')
+
+const comm = new Communication()
+comm.setPostFrom(output)
+comm.connect()
+
+const parser = new Parser()
+parser.setPostFrom(output)
+
+const editor = new Editor('#editor', 'Editor', 'editor')
+editor.setProcess((line, l) => { parser.parseLine(line, l) })
+
+</script>
+
+</html>
