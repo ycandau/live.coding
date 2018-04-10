@@ -1,6 +1,6 @@
 # live.editor
 
-> A text interface to create and patch objects in Max MSP.
+> A browser editor based on codemirror to create and patch objects in Max MSP.
 
 ## Commands
 
